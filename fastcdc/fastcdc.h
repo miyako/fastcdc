@@ -86,11 +86,12 @@ struct Document {
  *
  */
 
+#define OPENSSL_SUPPRESS_DEPRECATED
 #include "openssl/md5.h"
 #include "openssl/sha.h"
 #include <stdio.h>
 #include <string.h>
-#include <sys/time.h>
+//#include <sys/time.h>
 #include <zlib.h>
 #include "uthash.h"
 
