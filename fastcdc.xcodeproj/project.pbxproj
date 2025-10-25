@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D11BC5A32E8FDFC400FF8114 /* libjson.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11BC5922E8FDFC400FF8114 /* libjson.a */; };
+		D1CDAE6E2EACA9E1008B7329 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CDAE6C2EACA9E1008B7329 /* libcrypto.a */; };
+		D1CDAE6F2EACA9E1008B7329 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CDAE6D2EACA9E1008B7329 /* libssl.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +28,8 @@
 		D11BC5922E8FDFC400FF8114 /* libjson.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjson.a; path = a/libjson.a; sourceTree = "<group>"; };
 		D16478942E611F7700FC9914 /* fastcdc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fastcdc; sourceTree = BUILT_PRODUCTS_DIR; };
 		D164789E2E61216B00FC9914 /* fastcdc-config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "fastcdc-config.xcconfig"; sourceTree = "<group>"; };
+		D1CDAE6C2EACA9E1008B7329 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = a/libcrypto.a; sourceTree = "<group>"; };
+		D1CDAE6D2EACA9E1008B7329 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = a/libssl.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -44,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1CDAE6E2EACA9E1008B7329 /* libcrypto.a in Frameworks */,
+				D1CDAE6F2EACA9E1008B7329 /* libssl.a in Frameworks */,
 				D11BC5A32E8FDFC400FF8114 /* libjson.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +60,8 @@
 		D157F30B2E612DD500DF46D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1CDAE6C2EACA9E1008B7329 /* libcrypto.a */,
+				D1CDAE6D2EACA9E1008B7329 /* libssl.a */,
 				D11BC5922E8FDFC400FF8114 /* libjson.a */,
 			);
 			name = Frameworks;
