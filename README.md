@@ -6,6 +6,9 @@
 # fastcdc
 Tool to split data into content determined chunks
 
+> [!WARNING]
+> using CDC on text may yield semantically incorrect chunks.
+
 Using [xiacode/FastCDC-c](https://github.com/wxiacode/FastCDC-c)
 
 CLI is a [`text-splitter`](https://github.com/miyako/text-splitter) alternative.
