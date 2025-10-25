@@ -13,6 +13,13 @@ CLI is a [`text-splitter`](https://github.com/miyako/text-splitter) alternative.
 > [!TIP]
 > although intended for text chunking, the algorithm can be used on arbitrary data too. pass the `-r` switch to process raw data
 
+> [!NOTE]
+> by default, the `ORIGIN_CDC` function is used. other functions are available via switches  
+> 
+> `-R`: `ROLLING_2Bytes`  
+> `-n`: `NORMALIZED_CDC`  
+> `-N`: `NORMALIZED_2Bytes`  
+
 ## usage
 
 ```
