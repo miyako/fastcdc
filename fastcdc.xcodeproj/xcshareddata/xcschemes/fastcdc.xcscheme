@@ -57,7 +57,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "&quot;/Users/miyako/Desktop/You&apos;ve been enrolled in new training _ Vous avez e&#x301;te&#x301; inscrit a&#x300; une nouvelle formation.eml&quot;"
+            argument = "/Users/miyako/Downloads/FastCDC-c-master/fastcdc.c"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -66,14 +66,6 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-r"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "-p"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "test"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
@@ -81,7 +73,7 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "/Users/miyako/Desktop/excel.txt"
+            argument = "/Users/miyako/Desktop/fastcdc.txt"
             isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>

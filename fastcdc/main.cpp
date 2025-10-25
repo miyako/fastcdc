@@ -14,7 +14,7 @@ static void usage(void)
     fprintf(stderr, " -%c path  : %s\n", 'i' , "document to parse");
     fprintf(stderr, " -%c path  : %s\n", 'o' , "text output (default=stdout)");
     fprintf(stderr, " %c        : %s\n", '-' , "use stdin for input");
-    fprintf(stderr, " -%c       : %s\n", 'r' , "raw text output (default=json)");
+    fprintf(stderr, " -%c       : %s\n", 'r' , "raw data (default=no)");
     exit(1);
 }
 
@@ -73,6 +73,24 @@ int getopt(int argc, OPTARG_T *argv, OPTARG_T opts) {
 #define ARGS "i:o:-rh"
 #endif
 
+static void document_to_json(Document& document, std::string& text, bool printText) {
+    
+    Json::Value chunksNode(Json::arrayValue);
+    for (const auto &chunk : document.chunks) {
+        Json::Value chunkNode(Json::objectValue);
+        chunkNode["start"] = chunk.offset;
+        chunkNode["end"] = chunk.offset + chunk.length;
+        if(printText) {
+            chunkNode["text"] = chunk.text;
+        }
+        chunksNode.append(chunkNode);
+    }
+        
+    Json::StreamWriterBuilder writer;
+    writer["indentation"] = "";
+    text = Json::writeString(writer, chunksNode);
+}
+
 int main(int argc, OPTARG_T argv[]) {
     
     const OPTARG_T input_path  = NULL;
@@ -82,7 +100,10 @@ int main(int argc, OPTARG_T argv[]) {
     
     int ch;
     std::string text;
-    bool rawText = false;
+    bool rawData = false;
+    
+    chunking = cdc_origin_64;
+    int method = ORIGIN_CDC;
     
     while ((ch = getopt(argc, argv, ARGS)) != -1){
         switch (ch){
@@ -103,8 +124,25 @@ int main(int argc, OPTARG_T argv[]) {
             }
                 break;
             case 'r':
-                rawText = true;
+                rawData = true;
                 break;
+            case 'c':
+                chunking = cdc_origin_64;
+                method = ORIGIN_CDC;
+                break;
+            case 'R':
+                chunking = rolling_data_2byes_64;
+                method = ROLLING_2Bytes;
+                break;
+            case 'n':
+                chunking = normalized_chunking_64;
+                method = NORMALIZED_CDC;
+                break;
+            case 'N':
+                chunking = normalized_chunking_2byes_64;
+                method = NORMALIZED_2Bytes;
+                break;
+                
             case 'h':
             default:
                 usage();
@@ -127,6 +165,54 @@ int main(int argc, OPTARG_T argv[]) {
     if(!src_data.size()) {
         usage();
     }
+    
+    //start here
+    
+    Document document;
+    switch (method) {
+        case ROLLING_2Bytes:
+            document.CDC = "ROLLING_2Bytes";
+            break;
+        case NORMALIZED_CDC:
+            document.CDC = "NORMALIZED_CDC";
+            break;
+        case NORMALIZED_2Bytes:
+            document.CDC = "NORMALIZED_2Bytes";
+            break;
+        default:
+            document.CDC = "ORIGIN_CDC";
+            break;
+    }
+    
+    fastCDC_init();
+
+    int offset = 0, length = 0;
+    unsigned char *fileCache = src_data.data();
+    size_t CacheSize = src_data.size();
+    size_t end = CacheSize - 1;
+    
+    for (;;) {
+
+        Chunk chunk;
+        chunk.offset = offset;
+        length = (int)(CacheSize - offset + 1);
+        length = chunking(fileCache + offset, length);
+        if((offset + length) >= end) {
+            chunk.length = length - 1;
+        }else{
+            chunk.length = length;
+        }
+        if(!rawData) {
+            chunk.text = std::string(src_data.begin() + offset,
+                                     src_data.begin() + offset + chunk.length);
+        }
+        document.chunks.push_back(chunk);
+        offset += length;
+        if (offset >= end)
+            break;
+    }
+    
+    document_to_json(document, text, !rawData);
     
     if(!output_path) {
         std::cout << text << std::endl;

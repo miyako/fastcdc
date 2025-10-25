@@ -68,6 +68,17 @@ extern "C" {
 #endif  /* _WINGETOPT_H_ */
 #endif
 
+struct Chunk {
+    int offset;
+    int length;
+    std::string text;
+};
+
+struct Document {
+    std::string CDC;
+    std::vector<Chunk> chunks;
+};
+
 /**
  * This is an implementation of fastCDC
  * The origin paper is Wen Xia, Yukun Zhou, Hong Jiang, Dan Feng, Yu Hua, Yuchong Hu, Yucheng Zhang, Qing Liu, "FastCDC: a Fast and Efficient Content-Defined Chunking Approach for Data Deduplication", in Proceedings of USENIX Annual Technical Conference (USENIX ATC'16), Denver, CO, USA, June 22–24, 2016, pages: 101-114
@@ -175,7 +186,7 @@ uint64_t GEARv2[256] = {
 
 #define SymbolCount 256
 #define SeedLength 64
-#define CacheSize 1024 * 1024 * 1024
+//#define CacheSize 1024 * 1024 * 1024
 
 #define ORIGIN_CDC 1
 #define ROLLING_2Bytes 2
