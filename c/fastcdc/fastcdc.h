@@ -230,7 +230,7 @@ int tmpCount = 0;
 int smalChkCnt = 0;  //记录小于8KB的分块
 
 // init function
-void fastCDC_init(void);
+void fastCDC_init(uint32_t minSize, uint32_t maxSize);
 
 int (*chunking) (unsigned char*p, int n);
 

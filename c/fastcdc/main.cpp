@@ -15,6 +15,8 @@ static void usage(void)
     fprintf(stderr, " -%c path  : %s\n", 'o' , "text output (default=stdout)");
     fprintf(stderr, " %c        : %s\n", '-' , "use stdin for input");
     fprintf(stderr, " -%c       : %s\n", 'r' , "raw data (default=no)");
+    fprintf(stderr, " -%c size  : %s\n", 'f' , "minimum size (default=2048)");
+    fprintf(stderr, " -%c size  : %s\n", 't' , "maximum size (default=32768)");
     exit(1);
 }
 
@@ -68,9 +70,9 @@ int getopt(int argc, OPTARG_T *argv, OPTARG_T opts) {
     }
     return(c);
 }
-#define ARGS (OPTARG_T)L"i:o:-rh"
+#define ARGS (OPTARG_T)L"i:o:-rhcRnNf:t:"
 #else
-#define ARGS "i:o:-rh"
+#define ARGS "i:o:-rhcRnNf:t:"
 #endif
 
 static void document_to_json(Document& document, std::string& text, bool printText) {
@@ -104,6 +106,8 @@ int main(int argc, OPTARG_T argv[]) {
     
     chunking = cdc_origin_64;
     int method = ORIGIN_CDC;
+    uint32_t minSize = 8192 / 4;
+    uint32_t maxSize = 8192 * 4;
     
     while ((ch = getopt(argc, argv, ARGS)) != -1){
         switch (ch){
@@ -142,7 +146,32 @@ int main(int argc, OPTARG_T argv[]) {
                 chunking = normalized_chunking_2byes_64;
                 method = NORMALIZED_2Bytes;
                 break;
-                
+            case 'f':
+            {
+                char *endptr = NULL;
+                errno = 0;
+                unsigned long tmp = strtoul(optarg, &endptr, 0);
+                if ((errno == 0)
+                    && (*endptr == '\0')
+                    && (tmp <= UINT32_MAX)
+                    && (tmp < maxSize)) {
+                        minSize = (uint32_t)tmp;
+                }
+            }
+                break;
+            case 't':
+            {
+                char *endptr = NULL;
+                errno = 0;
+                unsigned long tmp = strtoul(optarg, &endptr, 0);
+                if ((errno == 0)
+                    && (*endptr == '\0')
+                    && (tmp <= UINT32_MAX)
+                    && (tmp > minSize)) {
+                        maxSize = (uint32_t)tmp;
+                }
+            }
+                break;
             case 'h':
             default:
                 usage();
@@ -184,7 +213,9 @@ int main(int argc, OPTARG_T argv[]) {
             break;
     }
     
-    fastCDC_init();
+
+    
+    fastCDC_init(minSize, maxSize);
 
     int offset = 0, length = 0;
     unsigned char *fileCache = src_data.data();
@@ -228,7 +259,8 @@ int main(int argc, OPTARG_T argv[]) {
 }
 
 // functions
-void fastCDC_init(void) {
+void fastCDC_init(uint32_t minSize, uint32_t maxSize) {
+    
     unsigned char md5_digest[16];
     uint8_t seed[SeedLength];
     for (int i = 0; i < SymbolCount; i++) {
@@ -248,8 +280,8 @@ void fastCDC_init(void) {
         LEARv2[i] = GEARv2[i] << 1;
     }
 
-    MinSize = 8192 / 4;
-    MaxSize = 8192 * 4;    // 32768;
+    MinSize = minSize;
+    MaxSize = maxSize;
     Mask_15 = 0xf9070353;  //  15个1
     Mask_11 = 0xd9000353;  //  11个1
     Mask_11_64 = 0x0000d90003530000;

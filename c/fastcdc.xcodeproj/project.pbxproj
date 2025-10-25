@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D1CDAE6E2EACA9E1008B7329 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CDAE6C2EACA9E1008B7329 /* libcrypto.a */; };
-		D1CDAE6F2EACA9E1008B7329 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CDAE6D2EACA9E1008B7329 /* libssl.a */; };
-		D1CDAE722EACB484008B7329 /* libjsoncpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CDAE712EACB484008B7329 /* libjsoncpp.a */; };
+		D1CDAE792EACCDF0008B7329 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CDAE762EACCDF0008B7329 /* libssl.a */; };
+		D1CDAE7A2EACCDF0008B7329 /* libjsoncpp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CDAE772EACCDF0008B7329 /* libjsoncpp.a */; };
+		D1CDAE7B2EACCDF0008B7329 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1CDAE782EACCDF0008B7329 /* libcrypto.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,9 +27,9 @@
 /* Begin PBXFileReference section */
 		D16478942E611F7700FC9914 /* fastcdc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fastcdc; sourceTree = BUILT_PRODUCTS_DIR; };
 		D164789E2E61216B00FC9914 /* fastcdc-config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "fastcdc-config.xcconfig"; sourceTree = "<group>"; };
-		D1CDAE6C2EACA9E1008B7329 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = a/libcrypto.a; sourceTree = "<group>"; };
-		D1CDAE6D2EACA9E1008B7329 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = a/libssl.a; sourceTree = "<group>"; };
-		D1CDAE712EACB484008B7329 /* libjsoncpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjsoncpp.a; path = a/libjsoncpp.a; sourceTree = "<group>"; };
+		D1CDAE762EACCDF0008B7329 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../a/libssl.a; sourceTree = "<group>"; };
+		D1CDAE772EACCDF0008B7329 /* libjsoncpp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjsoncpp.a; path = ../a/libjsoncpp.a; sourceTree = "<group>"; };
+		D1CDAE782EACCDF0008B7329 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../a/libcrypto.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -48,9 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1CDAE722EACB484008B7329 /* libjsoncpp.a in Frameworks */,
-				D1CDAE6E2EACA9E1008B7329 /* libcrypto.a in Frameworks */,
-				D1CDAE6F2EACA9E1008B7329 /* libssl.a in Frameworks */,
+				D1CDAE792EACCDF0008B7329 /* libssl.a in Frameworks */,
+				D1CDAE7A2EACCDF0008B7329 /* libjsoncpp.a in Frameworks */,
+				D1CDAE7B2EACCDF0008B7329 /* libcrypto.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,9 +60,9 @@
 		D157F30B2E612DD500DF46D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D1CDAE712EACB484008B7329 /* libjsoncpp.a */,
-				D1CDAE6C2EACA9E1008B7329 /* libcrypto.a */,
-				D1CDAE6D2EACA9E1008B7329 /* libssl.a */,
+				D1CDAE782EACCDF0008B7329 /* libcrypto.a */,
+				D1CDAE772EACCDF0008B7329 /* libjsoncpp.a */,
+				D1CDAE762EACCDF0008B7329 /* libssl.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 				HEADER_SEARCH_PATHS = "include/**";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/a",
+					"\"$(SRCROOT)/../a\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -306,7 +306,7 @@
 				HEADER_SEARCH_PATHS = "include/**";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/a",
+					"\"$(SRCROOT)/../a\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				PRODUCT_NAME = "$(TARGET_NAME)";
