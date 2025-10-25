@@ -7,7 +7,7 @@
 Tool to split data into content determined chunks
 
 > [!WARNING]
-> CDC on text may yield semantically incorrect chunks.
+> running CDC on text may yield semantically incorrect chunks
 
 Using [xiacode/FastCDC-c](https://github.com/wxiacode/FastCDC-c)
 
