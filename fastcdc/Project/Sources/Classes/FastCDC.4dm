@@ -55,7 +55,7 @@ Function chunk($option : Variant; $formula : 4D:C1709.Function) : Collection
 				$command+=" -i "
 				$command+=This:C1470.escape(This:C1470.expand($option.file).path)
 			: ((Value type:C1509($option.file)=Is object:K8:27) && (OB Instance of:C1731($option.file; 4D:C1709.Blob))) || (Value type:C1509($option.file)=Is BLOB:K8:12) || (Value type:C1509($option.file)=Is text:K8:3)
-				$command+=" "
+				$command+=" - "
 				$isStream:=True:C214
 		End case 
 		
