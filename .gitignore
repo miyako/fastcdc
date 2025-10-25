@@ -3,3 +3,4 @@ macOS/fastcdc.dSYM*
 .vs/*
 fastcdc/x64/Release/*
 x64/Release/fastcdc.pdb
+fastcdc/userPreferences.*

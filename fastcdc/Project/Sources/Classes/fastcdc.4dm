@@ -52,33 +52,15 @@ Function chunk($option : Variant; $formula : 4D:C1709.Function) : Collection
 		
 		Case of 
 			: (Value type:C1509($option.file)=Is object:K8:27) && (OB Instance of:C1731($option.file; 4D:C1709.File)) && ($option.file.exists)
-				$command+=" --input "
+				$command+=" -i "
 				$command+=This:C1470.escape(This:C1470.expand($option.file).path)
 			: ((Value type:C1509($option.file)=Is object:K8:27) && (OB Instance of:C1731($option.file; 4D:C1709.Blob))) || (Value type:C1509($option.file)=Is BLOB:K8:12) || (Value type:C1509($option.file)=Is text:K8:3)
 				$command+=" "
 				$isStream:=True:C214
 		End case 
 		
-		Case of 
-			: ($option.capacity#Null:C1517) && (Value type:C1509($option.capacity)=Is text:K8:3) && (Match regex:C1019("\\d+\\.\\.\\d+"; $option.capacity; 1))
-				$command+=" --capacity "
-				$command+=$option.capacity
-			: ($option.capacity#Null:C1517) && ((Value type:C1509($option.capacity)=Is real:K8:4) || (Value type:C1509($option.capacity)=Is integer:K8:5)) && ($option.capacity>0)
-				$command+=" --capacity "
-				$command+=String:C10(Int:C8($option.capacity))
-		End case 
-		
-		If ($option.overlap#Null:C1517) && ((Value type:C1509($option.overlap)=Is real:K8:4) || (Value type:C1509($option.overlap)=Is integer:K8:5)) && ($option.overlap>0)
-			$command+=" --overlap "
-			$command+=String:C10(Int:C8($option.overlap))
-		End if 
-		
-		If ($option.tiktoken#Null:C1517) && (Value type:C1509($option.tiktoken)=Is boolean:K8:9)
-			$command+=" --tiktoken "
-		End if 
-		
-		If ($option.markdown#Null:C1517) && (Value type:C1509($option.markdown)=Is boolean:K8:9)
-			$command+=" --markdown "
+		If ($option.rawData#Null:C1517) && (Value type:C1509($option.rawData)=Is boolean:K8:9)
+			$command+=" -r "
 		End if 
 		
 		var $worker : 4D:C1709.SystemWorker

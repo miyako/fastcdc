@@ -1,3 +1,3 @@
-# fastcdc : _CLI
+# FastCDC : _CLI
 
-`fastcdc` is a subclass of `_CLI` to execute `fastcdc`. 
+`FastCDC` is a subclass of `_CLI` to execute `fastcdc`. 
