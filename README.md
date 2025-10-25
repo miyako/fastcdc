@@ -14,7 +14,7 @@ Using [xiacode/FastCDC-c](https://github.com/wxiacode/FastCDC-c)
 CLI is a [`text-splitter`](https://github.com/miyako/text-splitter) alternative.
 
 > [!TIP]
-> although intended for text chunking, the algorithm can be used on arbitrary data too. pass the `-r` switch to process raw data
+> although primarily intended for text chunking, the algorithm can be used on arbitrary data too. pass the `-r` switch to process raw data
 
 > [!NOTE]
 > by default, the `ORIGIN_CDC` function is used. other functions are available via switches  
