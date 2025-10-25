@@ -5,3 +5,5 @@
 
 # fastcdc
 Tool to split text into content determined chunks
+
+Using [xiacode/FastCDC-c](https://github.com/wxiacode/FastCDC-c)
