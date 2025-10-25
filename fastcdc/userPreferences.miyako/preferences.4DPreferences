@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="3">
+	<com.4d>
+		<database>
+			<data_storage data_path="Data/data.4DD"/>
+		</database>
+		<compiler>
+			<options display_warnings="true"/>
+		</compiler>
+	</com.4d>
+</preferences>
