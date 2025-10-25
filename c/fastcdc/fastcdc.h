@@ -41,10 +41,12 @@
 #ifdef __GNUC__
 #define OPTARG_T char*
 #include <getopt.h>
+#define STRTOUL strtoul
 #else
 #ifndef _WINGETOPT_H_
 #define _WINGETOPT_H_
 #define OPTARG_T wchar_t*
+#define STRTOUL wcstoul
 #define main wmain
 #define NULL    0
 #define EOF    (-1)

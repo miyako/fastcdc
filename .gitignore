@@ -5,3 +5,7 @@ fastcdc/x64/Release/*
 x64/Release/fastcdc.pdb
 fastcdc/userPreferences.*
 c/.build/*
+c/x64/Release/fastcdc.pdb
+c/fastcdc/x64/Release/*
+c/.vs/fastcdc/v17/ipch/AutoPCH/26bc11e9282c9f68/MAIN.ipch
+c/.vs/*

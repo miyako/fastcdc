@@ -148,9 +148,9 @@ int main(int argc, OPTARG_T argv[]) {
                 break;
             case 'f':
             {
-                char *endptr = NULL;
+                OPTARG_T endptr = NULL;
                 errno = 0;
-                unsigned long tmp = strtoul(optarg, &endptr, 0);
+                unsigned long tmp = STRTOUL(optarg, &endptr, 0);
                 if ((errno == 0)
                     && (*endptr == '\0')
                     && (tmp <= UINT32_MAX)
@@ -161,9 +161,9 @@ int main(int argc, OPTARG_T argv[]) {
                 break;
             case 't':
             {
-                char *endptr = NULL;
+                OPTARG_T endptr = NULL;
                 errno = 0;
-                unsigned long tmp = strtoul(optarg, &endptr, 0);
+                unsigned long tmp = STRTOUL(optarg, &endptr, 0);
                 if ((errno == 0)
                     && (*endptr == '\0')
                     && (tmp <= UINT32_MAX)
