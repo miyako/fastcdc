@@ -7,3 +7,5 @@
 Tool to split text into content determined chunks
 
 Using [xiacode/FastCDC-c](https://github.com/wxiacode/FastCDC-c)
+
+CLI is a [`text-splitter`](https://github.com/miyako/text-splitter) alternative.
