@@ -11,4 +11,19 @@ Using [xiacode/FastCDC-c](https://github.com/wxiacode/FastCDC-c)
 CLI is a [`text-splitter`](https://github.com/miyako/text-splitter) alternative.
 
 > [!TIP]
-> pass the `-r` switch to process raw data
+> although intended for text chunking, the algorithm can be used on arbitrary data too. pass the `-r` switch to process raw data
+
+## usage
+
+```
+Usage:  fastcdc -r -i in -o out -
+
+split text into content determined chunks
+
+ -i path  : document to parse
+ -o path  : text output (default=stdout)
+ -        : use stdin for input
+ -r       : raw data (default=no)
+ -f size  : minimum size (default=2048)
+ -t size  : maximum size (default=32768)
+```
