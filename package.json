@@ -1,6 +1,6 @@
 {
   "name": "fastcdc",
-  "description": "Tool to split text into content determined chunks",
+  "description": "Tool to split data into content determined chunks",
   "author": [
     "wxiacode",
     "Keisuke Miyako <keisuke.miyako@4D.com>"
