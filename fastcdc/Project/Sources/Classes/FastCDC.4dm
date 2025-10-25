@@ -63,6 +63,14 @@ Function chunk($option : Variant; $formula : 4D:C1709.Function) : Collection
 			$command+=" -r "
 		End if 
 		
+		If ($option.minSize#Null:C1517) && (Value type:C1509($option.minSize)=Is real:K8:4)
+			$command+=" -f "+String:C10($option.minSize)+" "
+		End if 
+		
+		If ($option.maxSize#Null:C1517) && (Value type:C1509($option.maxSize)=Is real:K8:4)
+			$command+=" -t "+String:C10($option.maxSize)+" "
+		End if 
+		
 		var $worker : 4D:C1709.SystemWorker
 		$worker:=This:C1470.controller.execute($command; $isStream ? $option.file : Null:C1517; $option.data).worker
 		
