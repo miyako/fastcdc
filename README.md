@@ -10,5 +10,5 @@ Using [xiacode/FastCDC-c](https://github.com/wxiacode/FastCDC-c)
 
 CLI is a [`text-splitter`](https://github.com/miyako/text-splitter) alternative.
 
-> ![TIP]
+> [!TIP]
 > pass the `-r` switch to process raw data
