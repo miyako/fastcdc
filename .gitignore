@@ -9,3 +9,5 @@ c/x64/Release/fastcdc.pdb
 c/fastcdc/x64/Release/*
 c/.vs/fastcdc/v17/ipch/AutoPCH/26bc11e9282c9f68/MAIN.ipch
 c/.vs/*
+fastcdc/Data/data.4DD
+fastcdc/Data/data.journal
