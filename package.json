@@ -1,13 +1,13 @@
 {
   "name": "fastcdc",
-  "description": "Tool to split text into content determined chunks",
+  "description": "Tool to split data into content determined chunks",
   "author": [
     "wxiacode",
     "Keisuke Miyako <keisuke.miyako@4D.com>"
   ],
   "license": "MIT",
   "repository": "https://github.com/miyako/fastcdc",
-  "version": "20.0.7",
+  "version": "20.0.8",
   "tool": {
     "platform": "macos",
     "branch": "20.x",
